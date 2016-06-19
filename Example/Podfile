@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'TreeLib_Example' do
+  pod 'TreeLib', :path => '../'
+
+  target 'TreeLib_Tests' do
+    inherit! :search_paths
+
+    pod 'Kiwi'
+  pod 'FBSnapshotTestCase'
+  end
+end
