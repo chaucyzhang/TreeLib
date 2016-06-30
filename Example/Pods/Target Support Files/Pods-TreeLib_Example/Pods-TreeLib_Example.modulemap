@@ -1,0 +1,6 @@
+framework module Pods_TreeLib_Example {
+  umbrella header "Pods-TreeLib_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

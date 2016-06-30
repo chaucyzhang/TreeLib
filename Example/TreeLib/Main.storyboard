@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tree View Controller-->
         <scene sceneID="wQg-tq-qST">
             <objects>
                 <viewController id="whP-gf-Uak" customClass="TreeViewController" sceneMemberID="viewController">
@@ -16,8 +17,50 @@
                     <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIb-Fh-Rke">
+                                <rect key="frame" x="279" y="240" width="42" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="uJo-jJ-wmz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qBh-16-YVv">
+                                <rect key="frame" x="252" y="192" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9bu-aJ-Car"/>
+                                    <constraint firstAttribute="width" constant="97" id="RhH-XT-eI2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="qBh-16-YVv" secondAttribute="trailing" constant="231" id="5Ah-Gf-XgU"/>
+                            <constraint firstItem="qBh-16-YVv" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" constant="232" id="5B1-ZT-34M"/>
+                            <constraint firstItem="xIb-Fh-Rke" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" constant="161" id="OR3-HK-Sxl"/>
+                            <constraint firstItem="xIb-Fh-Rke" firstAttribute="top" secondItem="qBh-16-YVv" secondAttribute="bottom" constant="18" id="PSK-Vo-ZqE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xIb-Fh-Rke" secondAttribute="trailing" constant="161" id="fcd-jf-Lj2"/>
+                            <constraint firstItem="qBh-16-YVv" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="gBW-VF-2es"/>
+                            <constraint firstItem="qBh-16-YVv" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="172" id="iEO-e6-bvZ"/>
+                            <constraint firstItem="xIb-Fh-Rke" firstAttribute="centerX" secondItem="qBh-16-YVv" secondAttribute="centerX" id="mqq-Ac-JYU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OR3-HK-Sxl"/>
+                                <exclude reference="fcd-jf-Lj2"/>
+                                <exclude reference="5Ah-Gf-XgU"/>
+                                <exclude reference="5B1-ZT-34M"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="qBh-16-YVv" id="JGF-QQ-5xh"/>
+                        <outlet property="resultLabel" destination="xIb-Fh-Rke" id="Ojj-9n-S47"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,0 +1,26 @@
+PODS:
+  - FBSnapshotTestCase (2.1.1):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.1)
+  - FBSnapshotTestCase/Core (2.1.1)
+  - FBSnapshotTestCase/SwiftSupport (2.1.1):
+    - FBSnapshotTestCase/Core
+  - Kiwi (2.4.0)
+  - TreeLib (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - Kiwi
+  - TreeLib (from `../`)
+
+EXTERNAL SOURCES:
+  TreeLib:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 432afd8d059ccef7f207225894840a03fbcf7474
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  TreeLib: 1ac76da5a4f7d249905ba75649d225ed0a161937
+
+PODFILE CHECKSUM: 68c071c903e3319026a75beb7df1a3243f5397fc
+
+COCOAPODS: 1.0.1

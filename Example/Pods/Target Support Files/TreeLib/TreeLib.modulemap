@@ -1,0 +1,6 @@
+framework module TreeLib {
+  umbrella header "TreeLib-umbrella.h"
+
+  export *
+  module * { export * }
+}
