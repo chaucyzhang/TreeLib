@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TreeLib
 
 [![CI Status](http://img.shields.io/travis/tringappsXiZhang/TreeLib.svg?style=flat)](https://travis-ci.org/tringappsXiZhang/TreeLib)
@@ -27,3 +28,6 @@ tringappsXiZhang, xi.zhang@tringapps.com
 ## License
 
 TreeLib is available under the MIT license. See the LICENSE file for more info.
+=======
+# TreeLib
+>>>>>>> 69a872ec5143d7c271d3c3a007bb77bb338cb9e8
