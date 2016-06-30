@@ -18,7 +18,7 @@ TreeLib is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "TreeLib"
+pod "TreeLib", :git => 'git@github.com:chaucyzhang/TreeLib.git', :branch => 'master'
 ```
 
 ## Author
