@@ -17,6 +17,17 @@
 -(id)initWithRootNode:(Node*)rootNode;
 -(id)initWithNodes:(NSArray*)nodes;
 
--(void)generatePermutationOfNodes:(NSArray*)nodeArray branch:(NSMutableArray *)branch startIndex:(int)startIndex visitedArray:(NSMutableArray *)vistitedArray;
+#pragma mark - class methods
++(id)sharedTreeManager;
+
+
+
+#pragma mark - instance methods
+/*get permutation of nodes in an array of arrays*/
+-(NSArray*)generatePermutationOfNodes:(NSArray *)nodeArray;
+
+/*get combination of nodes in an array of arrays*/
+-(NSArray*)generateCombinationOfNodes:(NSArray *)nodeArray numberOfElements:(int)numberOfElements;
+
 
 @end

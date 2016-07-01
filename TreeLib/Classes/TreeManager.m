@@ -9,7 +9,7 @@
 #import "TreeManager.h"
 
 @interface TreeManager(){
-    
+    NSMutableArray *_branchArry;
 }
 
 @property(nonatomic, strong) Node *rootNode;
@@ -18,7 +18,15 @@
 
 @implementation TreeManager
 
-
++(id)sharedTreeManager
+{
+    static TreeManager *sharedTreeManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedTreeManager = [[self alloc] init];
+    });
+    return sharedTreeManager;
+}
 
 -(id)initWithRootNode:(Node*)rootNode
 {
@@ -47,18 +55,37 @@
     return self.rootNode;
 }
 
--(void)generatePermutationOfNodes:(NSArray*)nodeArray branch:(NSMutableArray *)branch startIndex:(int)startIndex visitedArray:(NSMutableArray *)vistitedArray
+-(NSArray*)generatePermutationOfNodes:(NSArray *)nodeArray
 {
+    _branchArry = [NSMutableArray array];
+    int startIndex = 0;
+    NSMutableArray *branch = [NSMutableArray array];
+    NSMutableArray *visitedArray = [NSMutableArray array];
+    for (int i = 0; i<nodeArray.count; i++) {
+        [visitedArray addObject:[NSNumber numberWithBool:NO]];
+    }
+    [self generatePermutationOfNodes:nodeArray branch:branch startIndex:startIndex visitedArray:visitedArray];
+    return [NSArray arrayWithArray:_branchArry];
+}
+
+-(NSArray*)generateCombinationOfNodes:(NSArray *)nodeArray numberOfElements:(int)numberOfElements
+{
+    _branchArry = [NSMutableArray array];
+    NSMutableArray *branch = [NSMutableArray array];
+    [self generateCombinationOfNodes:nodeArray branch:branch numberOfElement:numberOfElements level:0 numElem:0];
+    return [NSArray arrayWithArray:_branchArry];
+}
+
+-(void)generatePermutationOfNodes:(NSArray*)nodeArray branch:(NSMutableArray *)branch startIndex:(int)startIndex visitedArray:(NSMutableArray *)visitedArray
+{
+    
     if (startIndex == nodeArray.count-1) {
-        for (Node *node in branch) {
-            NSLog(@"%@",(NSString*)node.obj);
-        }
-        NSLog(@"--------------");
+        [_branchArry addObject:branch];
         return;
     }
     for(int i = 0;i<nodeArray.count;i++)
     {
-        if (![[vistitedArray objectAtIndex:i] boolValue]) {
+        if (![[visitedArray objectAtIndex:i] boolValue]) {
             Node *currentNode = [nodeArray objectAtIndex:i];
             if (branch.count>startIndex+1) {
                 [branch replaceObjectAtIndex:++startIndex withObject:currentNode];
@@ -67,11 +94,33 @@
                 [branch addObject:currentNode];
                 startIndex++;
             }
-            [vistitedArray replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:YES]];
-            [self generatePermutationOfNodes:nodeArray branch:branch startIndex:startIndex visitedArray:vistitedArray];
-            [vistitedArray replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];
+            [visitedArray replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:YES]];
+            [self generatePermutationOfNodes:nodeArray branch:branch startIndex:startIndex visitedArray:visitedArray];
+            [visitedArray replaceObjectAtIndex:i withObject:[NSNumber numberWithBool:NO]];
             startIndex--;
       }
+    }
+}
+
+-(void)generateCombinationOfNodes:(NSArray *)nodeArray branch:(NSMutableArray *)branch numberOfElement:(int)numberOfElement level:(int)level numElem:(int)numElem
+{
+    if (numElem == numberOfElement) {
+        [_branchArry addObject:branch];
+        return;
+    }
+    for(int i = level;i<nodeArray.count;i++)
+    {
+        Node *currentNode = [nodeArray objectAtIndex:i];
+        if (branch.count>numElem) {
+            [branch replaceObjectAtIndex:numElem withObject:currentNode];
+            numElem++;
+        }
+        else{
+            [branch addObject:currentNode];
+            numElem++;
+        }
+        [self generateCombinationOfNodes:nodeArray branch:branch numberOfElement:numberOfElement level:++level numElem:numElem];
+        numElem--;
     }
 }
 
